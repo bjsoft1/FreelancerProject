@@ -3,6 +3,22 @@
     Layout = "_Layout";
 }
 
+<section style="background-color: #eee;">
+            <h3 style="padding:10px;">Products</h3>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div id="products" class="col-md-8 col-lg-6 col-xl-4">
+                <div class="text-center" id="loader">
+                    <div class="spinner-border" role="status">
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
 
 
 @section Scripts{
@@ -13,14 +29,24 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    data.forEach(function (product) {
+
+                    data.data.forEach(function (p) {
                         let productCard = `
-                                <div class="card">
-                                    <h3>${product.name}</h3>
-                                    <p>Price: ${product.price}</p>
-                                    <img src="${product.imageUrl}" alt="${product.name}" width="150">
-                                    <p>${product.description}</p>
-                                </div>`;
+                        <div class="card text-black">
+                            <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+                                    <img src="${p.image}"
+                                         class="card-img-top" alt="${p.name}" />
+                            <div class="card-body">
+                                <div class="text-center">
+                                            <h5 class="card-title">${p.name}</h5>
+                                                    <p class="text-muted mb-4">${(p.description?? '')}</p>
+                                </div>
+ 
+                                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                                    <span>Total</span><span>$${p.price}</span>
+                                </div>
+                            </div>
+                        </div><br><br>`;
                         $("#products").append(productCard);
                     });
                 },

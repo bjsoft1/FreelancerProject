@@ -35,18 +35,19 @@ namespace FreelancerProject.Web.Areas.Product
 
                 // Get All Counter
                 int totalCount = productQuery.Count();
-                
+                var data = productQuery.Select(x => new
+                {
+                    Image = x.Image,
+                    Name = x.Name,
+                    Description = x.Description,
+                    Price = x.Price,
+                });//.Skip(skipCount).Take(maxCount).ToList();
+
                 // Return Data And Counter
                 return Json(new
                 {
                     totalCount = totalCount,
-                    data = productQuery.Select(x => new
-                    {
-                        Image = x.Image,
-                        Name = x.Name,
-                        Description = x.Description,
-                        Price = x.Price,
-                    }).Skip(skipCount).Take(maxCount).ToList()
+                    data = data
                 });
             }
             catch (Exception ex)
