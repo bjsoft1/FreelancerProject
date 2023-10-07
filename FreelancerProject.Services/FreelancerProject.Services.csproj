@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FreelancerProject.Dto\FreelancerProject.Dto.csproj" />
     <ProjectReference Include="..\FreelancerProject.Models\FreelancerProject.Models.csproj" />
   </ItemGroup>
 

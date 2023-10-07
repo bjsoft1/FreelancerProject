@@ -1,7 +1,5 @@
 using FreelancerProject.Services.DbContexts;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
+using FreelancerProject.Web.Configuarations;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +26,8 @@ builder.Services.AddDbContext<ProductDbContext>(options =>
     //options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+builder.Services.RegisterServices();
 
 var app = builder.Build();
 
