@@ -7,6 +7,27 @@
 
 @section Scripts{
     <script>
-    
+        $(document).ready(function () {
+            $.ajax({
+                url: '/Product/GetProductPaginationListing',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    data.forEach(function (product) {
+                        let productCard = `
+                                <div class="card">
+                                    <h3>${product.name}</h3>
+                                    <p>Price: ${product.price}</p>
+                                    <img src="${product.imageUrl}" alt="${product.name}" width="150">
+                                    <p>${product.description}</p>
+                                </div>`;
+                        $("#products").append(productCard);
+                    });
+                },
+                error: function (error) {
+                    console.log("Error fetching products:", error);
+                }
+            });
+        });
     </script>
 }
