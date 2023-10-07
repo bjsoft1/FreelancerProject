@@ -25,6 +25,9 @@ namespace FreelancerProject.Services.DbContexts
                 b.Property(x => x.Description).HasMaxLength(2000).IsRequired(false);
                 b.Property(x => x.Price).IsRequired(true).HasDefaultValue(0.0f);
             });
+
+            //Sedding Data
+            Private_Seedingdata(modelBuilder);
         }
 
         #region Private Funtions
