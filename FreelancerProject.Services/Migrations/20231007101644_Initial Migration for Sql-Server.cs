@@ -5,10 +5,30 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FreelancerProject.Services.Migrations
 {
-    public partial class ProductSeedingAdded : Migration
+    public partial class InitialMigrationforSqlServer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    image = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
+                    Price = table.Column<float>(type: "real", nullable: false, defaultValue: 0f),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                });
+
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "CreationTime", "DeletionTime", "Description", "image", "IsActive", "IsDeleted", "ModificationTime", "Name", "Price" },
@@ -39,105 +59,8 @@ namespace FreelancerProject.Services.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50000"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50001"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50002"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50003"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50004"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50005"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50006"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50007"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50008"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50009"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50010"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50011"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50012"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50013"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50014"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50015"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50016"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50017"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50018"));
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: new Guid("a9f06a70-8dfd-4e64-9c4c-42614ec50019"));
+            migrationBuilder.DropTable(
+                name: "Products");
         }
     }
 }
