@@ -1,7 +1,13 @@
+using FreelancerProject.Services.DbContexts;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ProductDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
+
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
