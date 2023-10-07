@@ -17,7 +17,7 @@ namespace FreelancerProject.Services.FileSystem
             //TODO:
             return await Task.FromResult(new FileCreateUpdateDto
             {
-                FileURL = "2.png",
+                FileURL = "assets/images/products/19.png",
             });
         }
 
@@ -28,7 +28,7 @@ namespace FreelancerProject.Services.FileSystem
             {
                 new FileCreateUpdateDto
                 {
-                    FileURL = "1.png",
+                    FileURL = "assets/images/products/14.png",
                 }
             });
         }

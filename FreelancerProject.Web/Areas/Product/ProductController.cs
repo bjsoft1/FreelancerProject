@@ -39,7 +39,7 @@ namespace FreelancerProject.Web.Areas.Product
 
                 // Get All Counter
                 int totalCount = productQuery.Count();
-                var data = productQuery.Select(x => new ProductCreateUpdateDto
+                var data = productQuery.OrderByDescending(x=> x.CreationTime).Select(x => new ProductCreateUpdateDto
                 {
                     Id = x.Id,
                     ImageFile = null,
@@ -106,7 +106,7 @@ namespace FreelancerProject.Web.Areas.Product
                     Price = createUpdateDto.Price,
                     Image = fileURL,
                 });
-
+                _dbContext.SaveChanges();
                 createUpdateDto.Id = data.Entity.Id;
 
                 TempData["Success"] = "Product Successfully Added.";
