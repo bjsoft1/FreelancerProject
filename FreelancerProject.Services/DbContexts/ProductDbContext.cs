@@ -26,5 +26,34 @@ namespace FreelancerProject.Services.DbContexts
                 b.Property(x => x.Price).IsRequired(true).HasDefaultValue(0.0f);
             });
         }
+
+        #region Private Funtions
+        private void Private_Seedingdata(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductModel>().HasData(Private_SampleProducts());
+        }
+        private List<ProductModel> Private_SampleProducts()
+        {
+            DateTime createTime = DateTime.Parse("2023-10-07 03:44:00 PM");
+            var products = new List<ProductModel>();  
+            for(int i = 0; i < 20; i++)
+            {
+                Guid id = Guid.Parse($"a9f06a70-8dfd-4e64-9c4c-42614ec{(50000 + i)}");
+
+                products.Add(new ProductModel
+                {
+                    Id = id,
+                    IsActive = true,
+                    CreationTime = createTime,
+                    Image = $"assets/images/products/{i}.png",
+                    Description = null,
+                    Name = $"My Product-{i}",
+                    Price = 120.0f * i + 1500.0f,
+                });
+            }
+            return products;
+        }
+        #endregion Private Funtions
+
     }
 }
