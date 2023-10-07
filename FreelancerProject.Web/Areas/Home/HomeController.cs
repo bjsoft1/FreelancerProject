@@ -8,8 +8,6 @@ namespace FreelancerProject.Web.Areas.Home
         [HttpGet("/")]
         public IActionResult Index()
         {
-            TempData["Success"] = "Hello";
-            TempData["Error"] = "Hello";
             return View();
         }
     }
