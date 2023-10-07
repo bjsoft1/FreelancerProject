@@ -29,7 +29,7 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-
+                    $('#loader').hide();
                     data.data.forEach(function (p) {
                         let productCard = `
                         <div class="card text-black">
